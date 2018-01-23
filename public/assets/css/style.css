@@ -1,0 +1,365 @@
+body, html{
+	height: 100vh;
+	width: 100%;
+}
+
+body{
+    background: #808080; /* For browsers that do not support gradients */
+    /* background: -webkit-linear-gradient(#808080, #d3d3d3); 
+    background: -o-linear-gradient(#808080, #d3d3d3); 
+    background: -moz-linear-gradient(#808080, #d3d3d3); 
+	background: linear-gradient(#808080, #d3d3d3);  */
+	background-size: cover;
+	padding-bottom: 85px; 
+}
+
+/*div{
+	border: dotted black 1px;
+}*/
+
+h1{
+	text-align: center;
+
+}
+
+.banner{
+	background-color: #ebebeb;
+	margin-bottom: 0px;
+}
+
+.connect-panel{
+	margin: auto 12.5vw;
+	margin-bottom: 70px;
+	max-width: 50%;
+}
+
+#contactForm{
+	overflow-y: hidden;
+	overflow-x: hidden;
+	max-height: 100%;
+}
+
+.contact-submit{
+	margin-top: 45%;
+}
+
+.contactee{
+	width: 80%;
+	padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: left;
+    background-color: white;
+    border: 1px solid rgb(136, 136, 136);
+    border-radius: 4px;
+}
+
+.container-fluid{
+	padding-right:0px;
+	padding-left:0px;
+}
+
+.content-wrapper{
+    border: 1px #222222 solid;
+}
+
+.copyright{
+	text-align: center;
+	height: 44px;
+	line-height: 44px;
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+#countryCodes{
+	max-width: 43%;
+	margin: 1% 10.75% 0% 10.75%;
+}
+
+.desc{
+	text-align: center;
+	background-image: url("./../images/br_brass.jpg");
+	background-size: 100%;
+	position: absolute;
+	width: 85%;
+	border-width: 2px 2px 2px .5px;
+	border-color: #9c501a;
+	border-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	bottom: 50px;
+	z-index: 1;
+}
+
+/* .footer.navbar{
+	border: 3px solid #9c501a;
+	background: #ff6f1c;
+	height: auto;
+
+} */
+
+.footer{
+	border: 3px solid #9c501a;
+	background-image: url("../images/br_copper2.jpg");
+	height: auto;
+	background-size: 100%;
+}
+
+.gitlink{
+	color: rgb(29, 29, 29)
+}
+
+/* .header.navbar{
+background: #047dff
+} */
+
+#headshot{
+	width: 75%;
+	height: auto;
+	padding-bottom: 10px;
+}
+
+.icon {
+	height: 45px;
+	width: 45px;
+	margin: 10px 10px 0px 10px;
+}
+
+.iconlnk{
+	float:left;
+	width:33%;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #333333;
+	background-color: #ffae4c;
+	background: #fa9420; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left top, #fa9420, #ffae4c); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(bottom right, #fa9420, #ffae4c); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(bottom right, #fa9420, #ffae4c); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to bottom right, #fa9420, #ffae4c); /* Standard syntax */
+    border: 2px solid #d46e00;
+    border-bottom: transparent;
+    margin-right: 0px;
+	font-weight: bold;
+}
+
+.mainbody{
+    background-image: url("./../images/oeschinenzee.jpg");
+	background-size: 100% 100%;
+	border-left: 2px #444444 solid;
+	border-right: 2px #444444 solid;
+	height: fit-content;
+}
+
+.maincontent{
+	margin: 10px 0px 50px 15px;
+	background-color: #ebebeb;
+	border-radius: 5px;
+	border: solid 1px #5c5c5c;
+	width: 48%;
+}
+
+.messagetxt{
+	width: 95%;
+	max-width: 100%;
+	min-width: 50%;
+	min-height: 4.5em;
+	height: 125px;
+}
+
+.namelogo{
+	margin: 1% 7.5vw;
+	padding: 0.5% 5%;
+	/* padding-left: 30px; */
+	background-image: url("./../images/br_brass.jpg");
+	background-size: 100%;
+	text-shadow: -1px 1px #504D4D;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+
+}
+
+.nav-tabs{
+	min-width: 251px;
+	max-width: 500px;
+	max-width: 50%;
+	margin: 0% 12vw;
+	border-bottom: none;
+	font-size:18px;
+}
+
+/* .nav-tabs>li.active>a, 
+.nav-tabs>li.active>a:focus, 
+.nav-tabs>li.active>a:hover {
+	color: beige;
+	background-color: transparent;
+	border: 2px solid #9eaeb5;
+	border-bottom: transparent;
+	margin-right: 0px;
+	font-weight: bold;
+} */
+
+.navbar{
+	margin-bottom: 0px;
+	background-color: #ebebeb;
+}
+
+/* .navRow.row{
+	margin-left: 0vw;
+	margin-right: 0vw;
+} */
+
+/* .navtabs{
+	margin: 0px auto;
+} */
+
+.nav-wrap{
+	width: 100%
+
+}
+
+
+#page-nav{
+	max-width: 500px;
+}
+
+.panel{
+	margin-top: 4%;
+	width:90%;
+}
+
+.panel-title{
+	border-bottom: 2px solid #999;
+	padding-bottom: 10px;
+}
+
+.row{
+	margin-right: 0px;
+}
+
+.thumbnail{
+	background-image:url("../images/br_brass.jpg");
+	background-size: cover;
+	border: 1px #333333 solid;
+}
+
+.topfill{
+	height: 50px;
+	width: 98%
+}
+
+/* @media screen and (max-width: 1003px){
+	.contact-submit{
+		margin-top: 2%;
+		margin-bottom:5%;
+	}
+
+	.navtabs{
+		margin-left: 3%;
+	}
+
+
+} */
+
+@media screen and (max-width: 1003px){
+	.connect-panel{
+		margin-bottom: 70px;
+		margin-right: 0%;
+		margin-left: 12vw;
+		min-width: 85%;
+	}
+
+	/* .maincontent{
+		min-width: 65vw;
+		margin-left: 12vw;
+	} */
+
+	.maincontent{
+		min-width: 85%;
+		margin-left: 7.5%;
+	}
+
+	.mainbody{
+		padding-left: 9vw;
+	}
+
+
+}
+
+@media screen and (max-width: 989px){
+	.mainbody{
+		padding-left: 1vw;
+	}
+	.maincontent{
+		min-width: 85%;
+		margin-left: 7.5%;
+	}
+
+}
+
+@media screen and (max-width: 768px){
+	.connect-panel{
+		margin-left: 6.5%;
+	}
+
+	.mainbody{
+		border-left: 0px;
+		border-right: 0px;
+		padding-left: 4vw;
+	}
+
+	.nav-tabs{
+		margin: auto 25vw;
+	}
+
+	.topfill{
+		height: 10px;
+	}
+}
+
+@media screen and (max-width: 500px){
+	.connect-panel{
+		margin-left: 7.5%;
+		min-width: 85%;
+	}
+	
+	.nav-tabs, .namelogo{
+		margin-left: 12.5vw;
+	}
+
+	.maincontent{
+		min-width: 75vw;
+		margin-left: 12vw;
+	}
+}
+
+@media screen and (max-width: 388px){
+	.desc{
+		width: 70%;
+		font-size: 11px;
+		position: absolute;
+		bottom:30px;
+	}
+	
+	.navtabs{
+		margin-left: 0%;
+		margin-right: 5%;
+	}
+
+	.portfolio-link, .portfolio-thbnail{
+		max-height: 100px
+	}
+
+
+}
+
+@media screen and (min-width: 1003px){
+	/* .footer{
+		height: 20vh;
+	} */
+}
