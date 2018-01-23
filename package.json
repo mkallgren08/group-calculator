@@ -1,28 +1,28 @@
 {
-  "name": "michael-kallgren-portfolio",
+  "name": "mern",
   "version": "1.0.0",
-  "description": "Professional portfolio of Michael K. Kallgren",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
+    "seed": "node scripts/seedDB.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mkallgren08/portfolio-full-stack.git"
-  },
-  "author": "Michael Kallgren",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mkallgren08/portfolio-full-stack/issues"
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
   },
-  "homepage": "https://github.com/mkallgren08/portfolio-full-stack#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "express-handlebars": "^3.0.0",
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
     "firebase": "^4.9.0",
-    "mongoose": "^4.12.3",
-    "morgan": "^1.9.0"
+    "mongoose": "^4.11.7",
+    "react-router-dom": "^4.1.2"
   }
 }
