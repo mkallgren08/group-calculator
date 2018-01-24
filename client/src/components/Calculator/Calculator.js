@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
-import { Input } from "../Form";
+//import { Input } from "../Form";
 import { Button } from "react-bootstrap";
 import "./Calculator.css";
 
@@ -14,6 +14,12 @@ class Calculator extends Component {
     botRowList: ["0", ".", "+"],
     equation: "",
 
+  }
+
+  sendButtonInput = (event) => {
+    let userGuess = event.target.value;
+    this.props.readButtonInput(userGuess)
+    alert("Comm works!")
   }
 
   readButtonInput = (event) => {
@@ -40,23 +46,17 @@ class Calculator extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
+      <Container>
             <Row>
               <h1>Calculator</h1>
             </Row>
-            <Input name='equation'
-              placeholder="Either type here and then press 'enter' or use the keyboard provided to get calculating!"
-              onChange={this.handleInputChange}
-            />
             <Row>
               {this.state.topRowList.map(item => (
                 <Col size='md-3' key={item}>
                   <Button
                     value={item}
                     className="calcBtn"
-                    onClickCapture={this.readButtonInput}>
+                    onClickCapture={this.sendButtonInput}>
                     {item}
                   </Button >
                 </Col>
@@ -68,7 +68,7 @@ class Calculator extends Component {
                   <Button
                     value={item}
                     className="calcBtn"
-                    onClickCapture={this.readButtonInput}>
+                    onClickCapture={this.sendButtonInput}>
                     {item}
                   </Button >
                 </Col>
@@ -80,7 +80,7 @@ class Calculator extends Component {
                   <Button
                     value={item}
                     className="calcBtn"
-                    onClickCapture={this.readButtonInput}>
+                    onClickCapture={this.sendButtonInput}>
                     {item}
                   </Button >
                 </Col>
@@ -92,7 +92,7 @@ class Calculator extends Component {
                   <Button
                     value={item}
                     className="calcBtn"
-                    onClickCapture={this.readButtonInput}>
+                    onClickCapture={this.sendButtonInput}>
                     {item}
                   </Button>
                 </Col>
@@ -104,7 +104,7 @@ class Calculator extends Component {
                   <Button
                     value={item}
                     className="calcBtn"
-                    onClickCapture={this.readButtonInput}>
+                    onClickCapture={this.sendButtonInput}>
                     {item}
                   </Button>
                 </Col>
@@ -118,8 +118,6 @@ class Calculator extends Component {
                 </Button>
               </Col>
             </Row>
-          </Col>
-        </Row>
       </Container>
     )
   }
