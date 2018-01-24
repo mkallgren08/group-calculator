@@ -151,11 +151,18 @@ class Home extends Component {
         if (exp.indexOf(operators[i]) !== -1) {
           console.log(operators[i])
           splitExp = exp.split(operators[i])
-          result = this.performOperations(splitExp[0], operators[i], splitExp[1])
+          if (splitExp.length === 2) {
+            console.log("split expression: " + splitExp)
+            result = this.performOperations(splitExp[0], operators[i], splitExp[1])
+          } else if (splitExp.length === 3) {
+            console.log("split expression: " + splitExp)
+            result = this.performOperations(splitExp[0], splitExp[1], splitExp[2])
+          }
+
         }
       }
 
-      console.log(splitExp)
+
 
 
       equation.expression = exp + " = " + result
@@ -205,7 +212,7 @@ class Home extends Component {
         result = opr1 * opr2;
         break;
       case "^":
-        result = Math.pow(opr1,opr2);
+        result = Math.pow(opr1, opr2);
         break;
       default:
         alert("I'm sorry, could you check to make sure you've used one of the following operators?" +
@@ -246,7 +253,7 @@ class Home extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let userHandle = "";
-    if (this.state.username.length < 1){
+    if (this.state.username.length < 1) {
       userHandle = "Anon"
     } else {
       userHandle = this.state.username;
