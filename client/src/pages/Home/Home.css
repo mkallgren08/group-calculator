@@ -1,0 +1,22 @@
+input{
+    width:100%;
+}
+
+#calculate-btn {
+    background: linear-gradient(to top right, #53c51e, #4eee0e);
+    line-height: 24px;
+    vertical-align: middle;
+    font-size: 24px;
+    color: #222222;
+    /* font-weight: bold; */
+    font-family: Impact, Charcoal, sans-serif;
+    border-color: darkgreen;
+    height: 35px;
+    border-radius: 4px;
+}
+
+#calc-input, #calc-title, #calculate-btn{
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}

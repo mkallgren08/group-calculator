@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Glyphicon } from "react-bootstrap";
-import Calculator from "../../components/Calculator"
 import { Col, Container, Row } from "../../components/Grid"
-import Jumbotron from "../../components/Jumbotron"
 import firebase from '../../firebase.js';
+import "./Home.css"
+
+// import Calculator from "../../components/Calculator"
+// import Jumbotron from "../../components/Jumbotron"
 
 class Home extends Component {
   constructor() {
@@ -31,109 +33,6 @@ class Home extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  getAllIndeces = (arr, val, equation) => {
-    console.log("arr: " + arr + ', val: ' + val)
-    let indeces = [], i;
-    for (i = 0; i < arr.length; i++)
-      if (arr[i] === val) {
-        indeces.push(i);
-      }
-    if (indeces.length !== 1) {
-      console.log("operand triggered false")
-      this.setState({ eqOkay: false }, function () {
-        this.parseEqCheck(equation)
-      })
-    }
-  }
-
-  checkDecimalPlacement = (arr, val) => {
-    let indeces = [], i;
-    let okay = true
-    for (i = 0; i < arr.length; i++)
-      if (arr[i] === val) {
-        indeces.push(i);
-      }
-    if (indeces.length >> 1) {
-      for (let j = 0; j < indeces.length; j++) {
-        if (indeces[j + 1] - 1 === indeces[j]) {
-          console.log("decimal triggered false")
-          okay = false
-
-        }
-      }
-    }
-
-    return okay
-  }
-
-  checkDecimalPlacementTwo = (equation) => {
-    if (equation.expression.indexOf("..") !== -1) {
-      console.log("decimal triggered false")
-      this.setState({ eqOkay: false }, function () {
-        this.parseEqCheck(equation)
-      })
-    }
-  }
-
-  // Starting code for a future implementation of a touchscreen calculator
-
-  // readButtonInput = (btnValuefromCalc) => {
-  //   this.setState({
-  //     btnValue: btnValuefromCalc,
-  //     currentEq: this.state.currentEq + btnValuefromCalc
-  //   })
-
-  // }
-
-  checkEquation = (equation) => {
-    //let userInput = equation.expression.toLowerCase();
-    let operators = this.state.operatorSet;
-    let index;
-    let counter = 0;
-    let checkEq = equation.expression;
-    let okay = true;
-    let splitByOp = []
-    let splitEq = equation.expression.split("")
-
-    for (var i = 0; i < operators.length; i++) {
-      if (checkEq.indexOf(operators[i]) > 0) {
-        okay = this.getAllIndeces(checkEq.split(""), operators[i], equation)
-        index = checkEq.indexOf(operators[i]);
-        splitByOp = checkEq.split(operators[i])
-        counter = counter + 1;
-        if (counter === 0 || counter >> 1) {
-          console.log("counter triggered false")
-          this.setState({ eqOkay: false }, function () {
-            this.parseEqCheck(equation)
-          })
-        }
-        console.log(splitEq);
-      }
-    };
-
-    if (checkEq.indexOf(".") >> -1) {
-      this.checkDecimalPlacementTwo(equation)
-    }
-
-    for (var j = 0; j < splitEq; j++) {
-      let charSet = this.state.characterSet
-      if (charSet.indexOf(splitEq[j]) === -1) {
-        console.log("Invalid character trigger")
-        this.setState({ eqOkay: false }, function () {
-          this.parseEqCheck(equation)
-        })
-      }
-    }
-
-    //console.log("Index of: " + index + ", counter: " + counter + ", split equation: " + splitEq)
-
-    //this.parseEqCheck(equation)
-
-
-
-
-  }
-
   solveEq = (equation) => {
     let exp = equation.expression;
     let operators = this.state.operatorSet;
@@ -146,10 +45,10 @@ class Home extends Component {
     if (exp.length < 3) {
       alert("I think you hit 'calculate' by mistake - please make sure you have entered enough data!")
       return;
-    } else if (exp.indexOf("..")>0){
+    } else if (exp.indexOf("..") > 0) {
       alert("I think you've doubled your decimal points! Please make sure to use only one in any given number.")
       return;
-    }else {
+    } else {
       for (let i = 0; i < operators.length; i++) {
         if (exp.indexOf(operators[i]) !== -1) {
           console.log(operators[i])
@@ -232,27 +131,6 @@ class Home extends Component {
     });
   }
 
-  parseEqCheck = (equation) => {
-    let okay = this.state.eqOkay
-    console.log("okay? " + okay)
-    //console.log(typeof equation.expression)
-    if (okay === false) {
-      alert("You may only use one operator per submission in beta!\n\t\tOR\nPlease make sure that you have used only one decimal point per number!")
-      return
-    } else {
-      // const equationList = firebase.database().ref('equations');
-
-      // equationList.push(equation);
-      // this.setState({
-      //   currentEq: '',
-      //   username: '',
-      //   eqOkay: true
-      // });
-
-      alert("Eq okay")
-    }
-  }
-
   handleSubmit(event) {
     event.preventDefault();
     let userHandle = "";
@@ -278,9 +156,7 @@ class Home extends Component {
       // creates an empty array for the equations' newState objects to be pushed to to go into.
       let equationsArray = [];
       let newState = [];
-      let counter = 0;
       for (let equation in equations) {
-        counter++;
         newState.unshift({
           id: equation,
           equation: equations[equation].expression,
@@ -290,73 +166,120 @@ class Home extends Component {
 
       if (newState.length > 10) {
         // let wholeLength = newState.length
-        equationsArray = newState.slice(-10, -1)
+        equationsArray = newState.slice(0, 10);
+        this.setState({
+          lastEqs: equationsArray
+        });
+      } else {
+        this.setState({
+          lastEqs: newState
+        });
       }
 
-      this.setState({
-        lastEqs: newState
-      });
+
     });
   }
   removeItem(itemId) {
     const equationRef = firebase.database().ref(`/equations/${itemId}`);
     equationRef.remove();
   }
+
   render() {
     return (
       <Container fluid>
-        <Row>
-          {/* <Jumbotron> */}
-          <h1>Group Accessible Calculator</h1>
-          {/* </Jumbotron> */}
-        </Row>
         <Row>
           <Col size="md-6">
             <Row>
               <Col size='md-2' />
               <Col size='md-8'>
-                <form onSubmit={this.handleSubmit}>
+                <h1 id="calc-title">Group Accessible Calculator</h1>
+              </Col>
+              <Col size='md-2' />
+            </Row>
+          </Col>
+          <Col size='md-6' />
+        </Row>
+        <Row>
+          <Col size="md-6">
+            <Row>
+              <Col size='md-2' />
+              <Col size='md-8' id="calc-wrapper">
+                <form onSubmit={this.handleSubmit} id="calc-input">
                   <input type="text" name="username" placeholder="Intials (optional)" onChange={this.handleChange} value={this.state.username} />
                   <br />
                   <input type="text" name="currentEq" placeholder="Equation input" onChange={this.handleChange} value={this.state.currentEq} />
                   <br />
-                  <button>Calculate</button>
+                  <button id="calculate-btn">Calculate</button>
                 </form>
+              </Col>
+              <Col size='md-2' />
+            </Row>
+            <Row>
+              <Col size='md-2' />
+              <Col size='md-8'>
+                <section className='display-item'>
+                  <div className="wrapper">
+                    <ol>
+                      {this.state.lastEqs.map((equation) => {
+                        return (
+                          <li key={equation.id}>
+                            <h4>{equation.equation}</h4>
+                            <p>Entered by: {equation.user}
+                              <button onClick={() => this.removeItem(equation.id)}>{<Glyphicon glyph="remove" />}</button>
+                            </p>
+                          </li>
+                        )
+                      })}
+                    </ol>
+                  </div>
+                </section>
               </Col>
               <Col size='md-2' />
             </Row>
           </Col>
           <Col size="md-6">
-            {/* <Calculator sendButtonInput = {this.readButtonInput}/> */}
             <div className="panel-wrapper">
               <div className="panel-header">
                 <p>
                   Hello there! A few ground rules for use of this calculator in beta:
-            </p>
+                </p>
               </div>
               <div className="panel-body">
-
+                <ol>
+                  <li>
+                    <strong>
+                      <h4>The only operators allowed are: {this.state.operatorSet.map(operator => {
+                        return (
+                          <span key={operator}> {operator} </span>
+                        )
+                      })}</h4>
+                    </strong>
+                  </li>
+                  <br />
+                  <li>
+                    <h4> Fractions must be expressed as a decimal - you may include as many significant figures as you like in the conversion (though 2 sig-figs are recommended). </h4>
+                    <ol>
+                      <p> Ex: </p>
+                      <li>1/4 = .25</li>
+                      <li>1/3 = .33 or .3333333333333</li>
+                      <li>1/7 = .14 or .1428571....</li>
+                    </ol>
+                  </li>
+                  <br />
+                  <li>
+                    <h4> Input is limited to a binary operation, i.e. "2+3" or "1.7*2.8". Any additional operators will cause the calculator to return an undefined (or "Not a Number" - NaN) result. </h4>
+                  </li>
+                </ol>
               </div>
             </div>
           </Col>
         </Row>
         <Row>
-          <section className='display-item'>
-            <div className="wrapper">
-              <ul>
-                {this.state.lastEqs.map((equation) => {
-                  return (
-                    <li key={equation.id}>
-                      <h3>{equation.equation}</h3>
-                      <p>Entered by: {equation.user}
-                        <button onClick={() => this.removeItem(equation.id)}>{<Glyphicon glyph="remove" />}</button>
-                      </p>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          </section>
+          <Col size="md-6">
+
+          </Col>
+          <Col size='md-6' />
+
         </Row>
       </Container>
     );
