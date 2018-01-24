@@ -146,7 +146,10 @@ class Home extends Component {
     if (exp.length < 3) {
       alert("I think you hit 'calculate' by mistake - please make sure you have entered enough data!")
       return;
-    } else {
+    } else if (exp.indexOf("..")>0){
+      alert("I think you've doubled your decimal points! Please make sure to use only one in any given number.")
+      return;
+    }else {
       for (let i = 0; i < operators.length; i++) {
         if (exp.indexOf(operators[i]) !== -1) {
           console.log(operators[i])
