@@ -1,2 +1,2 @@
-# NYT-API-React-App
-An app written in React.Js for searching the New York Times archives via their API
+# Group Calculator App
+Perform calculations in realtime with your friends: see who is submitting calculations and leave notes or messages when you submit!
